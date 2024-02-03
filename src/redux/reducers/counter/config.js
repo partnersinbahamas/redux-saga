@@ -1,4 +1,4 @@
-export const name = 'counter';
 export const initialState = {
+  name: 'counter',
   count: 0,
 };

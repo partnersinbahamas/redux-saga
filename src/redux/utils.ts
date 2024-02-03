@@ -1,1 +1,1 @@
-export const actionCreator = (type: string) => ({type});
+export const actionCreator = (type: string) => ({ type });
