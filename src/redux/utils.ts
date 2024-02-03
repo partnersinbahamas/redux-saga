@@ -1,0 +1,1 @@
+export const actionCreator = (type: string) => ({type});

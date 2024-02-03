@@ -1,18 +1,26 @@
 import { useAppDispatch } from "./redux/hooks";
 import { useAppSelector } from "./redux/hooks";
-import * as testActions from './redux/reducers/text';
+import { increase, decrease } from "./redux/reducers/counter/actions";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const test = useAppSelector(state => state.test);
+  const { count } = useAppSelector(state => state.counter);
+
+  const handleIncrease = () => {
+    dispatch(increase)
+  }
+
+  const handleDecrease = () => {
+    dispatch(decrease)
+  }
 
   return (
     <section>
       <h1>Redux saga App</h1>
 
-      <button onClick={() => dispatch(testActions.increace())}>+</button>
-      <button onClick={() => dispatch(testActions.decreace())}>-</button>
-      <span>Test: {test}</span>
+      <button onClick={handleIncrease}>+</button>
+      <button onClick={handleDecrease}>-</button>
+      <span>{count}</span>
     </section>
   );
 };
