@@ -1,16 +1,17 @@
-import { take } from '@redux-saga/core/effects';
-import { INCREASE_COUNT, DECREASE_COUNT } from '../redux/reducers/counter/actions';
+import { takeLatest, put, call } from '@redux-saga/core/effects';
+import { GET_NEWS } from '../redux/reducers/news/actions';
+import { getData } from '../api';
+import { setFetchData } from '../redux/reducers/news/actions';
 
-export function* workerSaga() {
-  yield;
+const delay = (timer) => new Promise((resolve) => setTimeout(resolve, timer * 1000))
+
+export function* handleLatestNews() {
+  const { hits } = yield call(() => getData('search?tags=front_page'));
+  yield put(setFetchData(hits))
 }
 
 export function* watcherSaga() {
-  yield take(INCREASE_COUNT);
-  console.log('Increase count request started');
-  yield take(DECREASE_COUNT);
-  console.log('Decrease count request started');
-
+    yield takeLatest(GET_NEWS, handleLatestNews);
 }
 
 export default function* rootSaga() {
