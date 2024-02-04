@@ -21,4 +21,4 @@ export const request = (url: string, method: string, data?: any) => {
     });
 }
 
-export const getData = async(url: string, param: any) => await request('search?tags=front_page', 'GET');
+export const getData = async(url: string) => await request(url, 'GET');

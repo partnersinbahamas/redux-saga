@@ -1,14 +1,18 @@
 import { useAppDispatch } from "./redux/hooks";
 import { useAppSelector } from "./redux/hooks";
 import { increase, decrease } from "./redux/reducers/counter/actions";
-import { fetchNewsData } from "./redux/reducers/news/actions";
-import { Button, IconButton } from "@mui/material";
-import { GetApp } from "@mui/icons-material";
+import { fetchNews } from "./redux/reducers/news/actions";
+import { Button } from "@mui/material";
+import { GetApp, Newspaper } from "@mui/icons-material";
+import styles from './App.module.scss';
+import { Logo } from "./components/Logo/Logo";
+import { News } from "./components/News/News";
+import { useState } from "react";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const { count } = useAppSelector(state => state.counter);
-  const { latestNews } = useAppSelector(state => state.news)
+  const { latestNews, popularNews } = useAppSelector(state => state.news);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleIncrease = () => {
     dispatch(increase)
@@ -18,32 +22,44 @@ const App = () => {
     dispatch(decrease)
   }
 
-  const onGetData = () => {
-    dispatch(fetchNewsData)
+  const onGetData = async() => {
+    try {
+      setIsLoading(true);
+      await dispatch(fetchNews)
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  console.log('news', latestNews);
+  console.log(isLoading)
 
   return (
-    <section>
-      <h1>Redux saga App</h1>
-
-      <div>
-        <button onClick={handleIncrease}>+</button>
-        <button onClick={handleDecrease}>-</button>
-
-        <span>{count}</span>
+    <section className={styles.app}>
+      <div className={styles.appLogo}>
+        <Logo/>
       </div>
+      <div className={styles.container}>
+        <Button
+          variant="contained"
+          onClick={onGetData}
+          className={styles.loadButton}
+        >
+          <GetApp />
+          <Newspaper/>
+        </Button>
 
-      <Button variant="contained" onClick={onGetData}>
-        <GetApp />
-      </Button>
+        <main className={styles.main}>
+          <p className={styles.title}>News</p>
+          {!!latestNews.length && (
+            <News news={latestNews} title='Latest news' />
+          )}
 
-      <ul>
-        {latestNews.map((n) => (
-          <p key={n.author}>{n.author}</p>
-        ))}
-      </ul>
+          {!!popularNews.length && (
+            <News news={popularNews} title='Popular news' />
+          )}
+        </main>
+      </div>
     </section>
   );
 };

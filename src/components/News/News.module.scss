@@ -1,0 +1,25 @@
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 2px ;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 220px;
+}
+
+.title {
+  padding-left: 10px;
+  text-align: left;
+  font-size: 20px;
+  color: #fff;
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: #fff;
+}

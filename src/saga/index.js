@@ -1,17 +1,27 @@
-import { takeLatest, put, call } from '@redux-saga/core/effects';
 import { GET_NEWS } from '../redux/reducers/news/actions';
-import { getData } from '../api';
-import { setFetchData } from '../redux/reducers/news/actions';
+import { takeLatest, put, call, fork, all } from '@redux-saga/core/effects';
+import { getLatestNews, getPopularNews } from '../redux/reducers/news/api';
+import { latestNewsAction, popularNewstAction } from '../redux/reducers/news/actions';
 
-const delay = (timer) => new Promise((resolve) => setTimeout(resolve, timer * 1000))
+export function* handleNews() {
+  yield fork(handleLatestNews);
+  yield fork(handlePopularNews);
+  // or
+//  yield all([call(handleLatestNews), call(handlePopularNews)])
+}  
+
+export function* handlePopularNews() {
+  const { hits } = yield call(getPopularNews);
+  yield put(popularNewstAction(hits));
+}
 
 export function* handleLatestNews() {
-  const { hits } = yield call(() => getData('search?tags=front_page'));
-  yield put(setFetchData(hits))
+  const { hits } = yield call(getLatestNews);
+  yield put(latestNewsAction(hits))
 }
 
 export function* watcherSaga() {
-    yield takeLatest(GET_NEWS, handleLatestNews);
+  yield takeLatest(GET_NEWS, handleNews);
 }
 
 export default function* rootSaga() {
