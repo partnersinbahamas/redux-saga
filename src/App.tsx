@@ -2,8 +2,9 @@ import { useAppDispatch } from "./redux/hooks";
 import { useAppSelector } from "./redux/hooks";
 import { increase, decrease } from "./redux/reducers/counter/actions";
 import { fetchNews } from "./redux/reducers/news/actions";
-import { Button } from "@mui/material";
-import { GetApp, Newspaper } from "@mui/icons-material";
+import { Button, ButtonGroup } from "@mui/material";
+import { Delete, GetApp, Newspaper } from "@mui/icons-material";
+import { removeNewsAction } from "./redux/reducers/news/actions";
 import styles from './App.module.scss';
 import { Logo } from "./components/Logo/Logo";
 import { News } from "./components/News/News";
@@ -32,6 +33,10 @@ const App = () => {
     }
   }
 
+  const handleRemove = () => {
+    dispatch(removeNewsAction);
+  }
+
   console.log(isLoading)
 
   return (
@@ -40,14 +45,26 @@ const App = () => {
         <Logo/>
       </div>
       <div className={styles.container}>
+      <ButtonGroup
+        fullWidth
+        variant="contained"
+      >
         <Button
-          variant="contained"
           onClick={onGetData}
           className={styles.loadButton}
         >
           <GetApp />
           <Newspaper/>
         </Button>
+
+        <Button
+          onClick={handleRemove}
+          sx={{width: 80}}
+          color="error"
+        >
+          <Delete />
+        </Button>
+      </ButtonGroup>
 
         <main className={styles.main}>
           <p className={styles.title}>News</p>

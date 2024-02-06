@@ -1,4 +1,5 @@
 const BASE_URL = 'http://hn.algolia.com/api/v1';
+
 export const request = (url: string, method: string, data?: any) => {
   const options: any = {
     method,
