@@ -9,19 +9,13 @@ import styles from './App.module.scss';
 import { Logo } from "./components/Logo/Logo";
 import { News } from "./components/News/News";
 import { useState } from "react";
+import { Error } from "./components/Error/Error";
 
 const App = () => {
   const dispatch = useAppDispatch();
   const { latestNews, popularNews } = useAppSelector(state => state.news);
+  const { errorLatestNews, errorPopularNews } = useAppSelector(state => state.error)
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const handleIncrease = () => {
-    dispatch(increase)
-  }
-
-  const handleDecrease = () => {
-    dispatch(decrease)
-  }
 
   const onGetData = async() => {
     try {
@@ -68,12 +62,20 @@ const App = () => {
 
         <main className={styles.main}>
           <p className={styles.title}>News</p>
-          {!!latestNews.length && (
-            <News news={latestNews} title='Latest news' />
+          {errorLatestNews ? (
+            <Error error={errorLatestNews}/>
+          ) : (
+            <>
+              {!!latestNews.length && <News news={latestNews} title='Latest news' />}
+            </>
           )}
 
-          {!!popularNews.length && (
-            <News news={popularNews} title='Popular news' />
+          {errorPopularNews ? (
+            <Error error={errorLatestNews}/>
+          ) : (
+            <>
+            {!!popularNews.length && <News news={popularNews} title='Popular news' />}
+          </>
           )}
         </main>
       </div>
