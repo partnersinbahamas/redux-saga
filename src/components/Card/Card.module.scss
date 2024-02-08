@@ -4,3 +4,8 @@
   border-radius: 5px;
   color: rgba($color: #fff, $alpha: .6);
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
