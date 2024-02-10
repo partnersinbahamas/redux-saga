@@ -1,5 +1,10 @@
+import { Logo } from "../../components/Logo/Logo";
+import styles from './Home.module.scss';
+
 export const Home = () => {
   return (
-    <h1>Home</h1>
+    <section className={styles.home}>
+      <Logo />
+    </section>
   )
 }

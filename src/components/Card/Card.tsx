@@ -1,12 +1,13 @@
 import styles from './Card.module.scss';
+import { convertIsoToFormattedDate } from '../../helpers/functions';
 
 type Props = {
   card: any
 }
 
 export const Card: React.FC<Props> = ({card}) => {
-  console.log(card);
   const { author, title, created_at, url} = card;
+  console.log(card);
   return (
     <div key={card.author} className={styles.card}>
       <div className={styles.container}>
@@ -26,11 +27,10 @@ export const Card: React.FC<Props> = ({card}) => {
           <span>{title}</span>
         </div>
 
-
         <div>
           <span>Created at: </span>
           <span>
-            {created_at}
+            {convertIsoToFormattedDate(created_at)}
           </span>
         </div>
       </div>

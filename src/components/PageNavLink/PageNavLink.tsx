@@ -11,7 +11,14 @@ type Props = {
 
 export const PageNavLink: React.FC<Props> = ({ to, text, icon }) => {
   return (
-    <NavLink to={to} className={styles.pageNavLink}>
+    <NavLink
+      to={to}
+    //   className={styles.pageNavLink}
+      className={({isActive}) => classNames(
+        styles.pageNavLink,
+        {[styles.active]: isActive}
+      )}
+      >
       {icon && icon}
 
       <p className={classNames(

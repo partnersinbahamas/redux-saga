@@ -1,7 +1,6 @@
 .app {
   min-height: calc(100vh - 20px);
   position: relative;
-  padding: 10px;
 }
 
 .appLogo {
@@ -10,16 +9,13 @@
 }
 
 .container {
-  width: 80%;
-  margin: 0 auto;
+  padding: 10px;
 }
 
 .main {
   margin-top: 1rem;
   text-align: center;
   background-color: #fff;
-  min-height: calc(100vh - 100px);
-  max-height: calc(100vh - 100px);
   overflow: auto;
   border-radius: 10px;
   background-color: rgba($color: #000, $alpha: .15);
