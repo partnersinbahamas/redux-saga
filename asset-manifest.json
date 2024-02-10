@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/redux-saga/static/css/main.b01e06cb.css",
-    "main.js": "/redux-saga/static/js/main.f5af177e.js",
+    "main.css": "/redux-saga/static/css/main.6daf6656.css",
+    "main.js": "/redux-saga/static/js/main.84587e6e.js",
     "static/js/592.4e3bf3a0.chunk.js": "/redux-saga/static/js/592.4e3bf3a0.chunk.js",
     "static/media/Redux-Saga-logo.png": "/redux-saga/static/media/Redux-Saga-logo.c63fe22735c7d911a647.png",
     "index.html": "/redux-saga/index.html",
-    "main.b01e06cb.css.map": "/redux-saga/static/css/main.b01e06cb.css.map",
-    "main.f5af177e.js.map": "/redux-saga/static/js/main.f5af177e.js.map",
+    "main.6daf6656.css.map": "/redux-saga/static/css/main.6daf6656.css.map",
+    "main.84587e6e.js.map": "/redux-saga/static/js/main.84587e6e.js.map",
     "592.4e3bf3a0.chunk.js.map": "/redux-saga/static/js/592.4e3bf3a0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b01e06cb.css",
-    "static/js/main.f5af177e.js"
+    "static/css/main.6daf6656.css",
+    "static/js/main.84587e6e.js"
   ]
 }
