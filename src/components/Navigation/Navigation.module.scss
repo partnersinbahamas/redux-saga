@@ -1,0 +1,27 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.container {
+  z-index: 1;
+  transition: transform .3s;
+  margin-left: 4rem;
+
+  &_move {
+    transform: translateY(3rem);
+  }
+}
+
+.list {
+  z-index: 2;
+  width: 500px;
+  padding: 1rem 8rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+}

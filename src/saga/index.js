@@ -1,16 +1,8 @@
-import { GET_NEWS } from '../redux/reducers/news/actions';
 import { takeLatest, put, call, fork, all } from '@redux-saga/core/effects';
 import { getLatestNews, getPopularNews } from '../redux/reducers/news/api';
 import { latestNewsAction, popularNewstAction } from '../redux/reducers/news/actions';
 import { latestErrorsAction, popularErrorsAction } from '../redux/reducers/errors/actions';
-
-export function* handleNews() {
-  yield fork(handleLatestNews);
-  yield fork(handlePopularNews);
-  // or
-  //  yield all([call(handleLatestNews), call(handlePopularNews)])
-}  
-
+import { GET_LATEST_NEWS, GET_POPULAR_NEWS } from '../redux/reducers/news/actions';
 
 export function* handlePopularNews() {
   try {
@@ -30,8 +22,17 @@ export function* handleLatestNews() {
   }
 }
 
+function* watcherPopularNews() {
+  yield takeLatest(GET_POPULAR_NEWS, handlePopularNews);
+}
+
+function* watcherLatesrNews() {
+  yield takeLatest(GET_LATEST_NEWS, handleLatestNews);
+}
+
 export function* watcherSaga() {
-  yield takeLatest(GET_NEWS, handleNews);
+  yield fork(watcherLatesrNews);
+  yield fork(watcherPopularNews);
 }
 
 export default function* rootSaga() {
