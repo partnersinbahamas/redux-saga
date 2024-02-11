@@ -9,5 +9,5 @@ export const DBLogo = () => {
       title="Saga-logo"
       className={styles.logo}
     />
-  )
-}
+  );
+};

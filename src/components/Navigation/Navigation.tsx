@@ -1,11 +1,11 @@
 import { PageNavLink } from '../PageNavLink/PageNavLink';
 import { routes } from '../../helpers/variables';
-import styles from './Navigation.module.scss';
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Newsnav } from './Newsnav/Newsnav';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import classNames from 'classnames';
+import styles from './Navigation.module.scss';
 
 export const Navigation = () => {
   const location = useLocation();

@@ -13,7 +13,6 @@ export const PageNavLink: React.FC<Props> = ({ to, text, icon }) => {
   return (
     <NavLink
       to={to}
-    //   className={styles.pageNavLink}
       className={({isActive}) => classNames(
         styles.pageNavLink,
         {[styles.active]: isActive}

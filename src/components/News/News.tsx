@@ -1,5 +1,4 @@
 import { Card } from "../Card/Card";
-import { Divider } from "@mui/material";
 import styles from './News.module.scss';
 
 type Props = {

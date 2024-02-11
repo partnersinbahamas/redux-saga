@@ -1,14 +1,13 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  height: 44vh;
-  background-color: rgba($color: red, $alpha: .25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .error {
   font-size: 12px;
+  color: red;
 
   &:hover {
     text-decoration: underline;

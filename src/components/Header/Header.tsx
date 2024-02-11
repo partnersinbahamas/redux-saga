@@ -7,5 +7,5 @@ export const Header = () => {
       <span className={styles.subtitle}>Powered by</span>
       <DBLogo />
     </header>
-  )
-}
+  );
+};
